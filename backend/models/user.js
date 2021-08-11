@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
+const moment= require("moment");
 const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
   name: String,
   email: String,
-  pass: String,
+  password: String,
   roleId: { type: mongoose.Schema.ObjectId, ref: "role" },
   date: { type: Date, default: Date.now },
   dbStatus: Boolean,
