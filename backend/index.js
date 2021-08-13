@@ -6,7 +6,7 @@ const { dbConnection } = require("./db/db");
 //para configurar las variables de entorno - archivo .env
 const Role = require("./routes/role");
 const User = require("./routes/user");
-
+const Auth = require("./routes/auth");
 require("dotenv").config();
 
 const app = express();
@@ -15,8 +15,9 @@ app.use(express.json());
 //usa los cors para la aplicación
 app.use(cors());
 //url
-app.use("/api/role", Role);
-app.use("/api/user", User);
+app.use("/api/role/", Role);
+app.use("/api/user/", User);
+app.use("/api/auth/", Auth);
 
 //se va ejecutar por un puerto y lo llama del archivo .env con el process.env.PORT
 
