@@ -4,7 +4,7 @@ const User = require("../models/user");
 //función con la que el usuario se va logear
 const login = async (req, res) => {
   //buscar el email que me llego del req en User
-  let user = await User.findOne({ email: req.body.email });
+  let user = await User.findOne({ email: req.body.name });
   //si no esta el correo registrado, muestro el mensaje de error
   if (!user) return res.status(400).send("Incorrect email or password");
   const hash = await bcrypt.compare(req.body.password, user.password);

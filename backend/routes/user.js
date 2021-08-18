@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const UserController = require("../controllers/user");
+const Auth = require("../middleware/auth");
+const ValidateUser = require("../middleware/validateUser");
 
-router.post("/registerUser",UserController.registerUser);
+router.post("/registerUser", UserController.registerUser);
 //http://localhost:3001/api/user/listUser
-// ? es opcional y si lo quito es obligatorio 
-router.get("/listUser/:name?",UserController.listUser);
+// ? es opcional y si lo quito es obligatorio
+router.get("/listUser/:name?", Auth, ValidateUser, UserController.listUser);
 
-module.exports=router;
+module.exports = router;

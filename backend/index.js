@@ -7,17 +7,19 @@ const { dbConnection } = require("./db/db");
 const Role = require("./routes/role");
 const User = require("./routes/user");
 const Auth = require("./routes/auth");
+const Board = require("./routes/board");
 require("dotenv").config();
 
 const app = express();
 //se va manejar en formato json
 app.use(express.json());
-//usa los cors para la aplicación
+//usa los cors para la aplicación --- cors para todo la seguridad 
 app.use(cors());
 //url
 app.use("/api/role/", Role);
 app.use("/api/user/", User);
 app.use("/api/auth/", Auth);
+app.use("/api/board/", Board);
 
 //se va ejecutar por un puerto y lo llama del archivo .env con el process.env.PORT
 

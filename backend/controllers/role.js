@@ -5,7 +5,8 @@ const registerRole = async (req, res) => {
   //valido que no me lleguen valores null
   if (!req.body.name || !req.body.description)
     return res.status(401).send("Process failed: Incomplete data");
-
+//find busca todos
+//findOne busca uno 
   //validar si existe el rol
   const existingRole = await Role.findOne({ name: req.body.name });
   // ya este registro esta en la base de datos y retorno un error de 401
