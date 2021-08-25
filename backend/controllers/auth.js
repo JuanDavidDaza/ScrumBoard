@@ -7,6 +7,9 @@ const login = async (req, res) => {
   let user = await User.findOne({ email: req.body.name });
   //si no esta el correo registrado, muestro el mensaje de error
   if (!user) return res.status(400).send("Incorrect email or password");
+
+  if(user.dbStatus === false) return res.status(400).send("Incorrect email or password");
+
   const hash = await bcrypt.compare(req.body.password, user.password);
   if (!hash) return res.status(400).send("Incorrect email or password");
 
